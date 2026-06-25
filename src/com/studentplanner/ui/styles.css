@@ -1,0 +1,569 @@
+/* =========================================================
+   Student Planner — Global Stylesheet
+   =========================================================
+   JavaFX CSS uses '-fx-' prefixed properties. The .root
+   selector applies to the scene root, so styles cascade.
+   ========================================================= */
+
+.root {
+    -fx-background-color: #fafaf9;
+    -fx-font-family: "Segoe UI", "SF Pro Display", "Helvetica Neue", sans-serif;
+    -fx-font-size: 13px;
+    -fx-text-fill: #1f2937;
+
+    /* Custom named colors -- used elsewhere via -primary, etc.
+       JavaFX lets us define theme variables this way. */
+    -primary:        #4f46e5;
+    -primary-hover:  #4338ca;
+    -primary-press:  #3730a3;
+    -text-primary:   #1f2937;
+    -text-muted:     #6b7280;
+    -border:         #e5e7eb;
+    -card-bg:        #ffffff;
+    -success:        #10b981;
+    -warning:        #f59e0b;
+    -danger:         #ef4444;
+    -overdue-bg:     #fef2f2;
+    -completed-bg:   #f3f4f6;
+}
+
+/* =========================================================
+   Typography
+   ========================================================= */
+
+.h1 {
+    -fx-font-size: 26px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -text-primary;
+}
+
+.h2 {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -text-primary;
+}
+
+.h3 {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -text-primary;
+}
+
+.subtle {
+    -fx-text-fill: -text-muted;
+    -fx-font-size: 13px;
+}
+
+.muted {
+    -fx-text-fill: -text-muted;
+}
+
+.error-text {
+    -fx-text-fill: -danger;
+    -fx-font-size: 13px;
+}
+
+/* =========================================================
+   Buttons
+   ========================================================= */
+
+.button {
+    -fx-background-color: -card-bg;
+    -fx-text-fill: -text-primary;
+    -fx-border-color: -border;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-padding: 8 16 8 16;
+    -fx-cursor: hand;
+    -fx-font-size: 13px;
+}
+
+.button:hover {
+    -fx-background-color: #f5f5f4;
+}
+
+.button:pressed {
+    -fx-background-color: #e7e5e4;
+}
+
+/* Primary button — used for main actions like Login / Add */
+.button-primary {
+    -fx-background-color: -primary;
+    -fx-text-fill: white;
+    -fx-border-color: transparent;
+    -fx-font-weight: bold;
+}
+
+.button-primary:hover {
+    -fx-background-color: -primary-hover;
+}
+
+.button-primary:pressed {
+    -fx-background-color: -primary-press;
+}
+
+/* Danger button — for Delete actions */
+.button-danger {
+    -fx-background-color: -card-bg;
+    -fx-text-fill: -danger;
+    -fx-border-color: -border;
+}
+
+.button-danger:hover {
+    -fx-background-color: -overdue-bg;
+}
+
+/* Disabled buttons should feel inactive */
+.button:disabled {
+    -fx-opacity: 0.5;
+    -fx-cursor: default;
+}
+
+/* =========================================================
+   Inputs
+   ========================================================= */
+
+.text-field, .password-field, .text-area, .combo-box, .choice-box,
+.date-picker, .spinner {
+    -fx-background-color: -card-bg;
+    -fx-border-color: -border;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-padding: 6 10 6 10;
+    -fx-font-size: 13px;
+}
+
+.text-field:focused, .password-field:focused, .text-area:focused,
+.combo-box:focused, .choice-box:focused, .date-picker:focused,
+.spinner:focused {
+    -fx-border-color: -primary;
+}
+
+/* =========================================================
+   Cards (used on Dashboard and dialogs)
+   ========================================================= */
+
+.card {
+    -fx-background-color: -card-bg;
+    -fx-background-radius: 10;
+    -fx-border-color: -border;
+    -fx-border-radius: 10;
+    -fx-border-width: 1;
+    -fx-padding: 18;
+}
+
+.card-number {
+    -fx-font-size: 30px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -text-primary;
+}
+
+.card-label {
+    -fx-font-size: 12px;
+    -fx-text-fill: -text-muted;
+}
+
+/* Color accents for stat numbers */
+.accent-pending    { -fx-text-fill: -primary; }
+.accent-progress   { -fx-text-fill: -warning; }
+.accent-completed  { -fx-text-fill: -success; }
+.accent-overdue    { -fx-text-fill: -danger; }
+
+/* =========================================================
+   Top navigation bar (Dashboard "home")
+   ========================================================= */
+
+.nav-bar {
+    -fx-background-color: -card-bg;
+    -fx-border-color: -border;
+    -fx-border-width: 0 0 1 0;
+    -fx-padding: 10 16 10 16;
+}
+
+/* =========================================================
+   Tables
+   ========================================================= */
+
+.table-view {
+    -fx-background-color: -card-bg;
+    -fx-border-color: -border;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-padding: 0;
+}
+
+/* Hide the slightly-darker frame around the cells */
+.table-view:focused {
+    -fx-background-color: -card-bg;
+    -fx-border-color: -border;
+}
+
+/* ---------- Header row ---------- */
+
+.table-view .column-header-background {
+    -fx-background-color: #f9fafb;
+    -fx-background-radius: 10 10 0 0;
+    -fx-padding: 0;
+}
+
+.table-view .column-header,
+.table-view .filler {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent -border transparent transparent;
+    -fx-border-width: 0 1 1 0;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: -text-muted;
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 12 14 12 14;
+}
+
+/* The vertical separator on the right edge of the last header */
+.table-view .column-header:last-visible {
+    -fx-border-width: 0 0 1 0;
+}
+
+/* ---------- Data rows ---------- */
+
+.table-row-cell {
+    -fx-background-color: -card-bg;
+    -fx-border-color: transparent;
+    -fx-cell-size: 40px;             /* generous row height — the big visual win */
+    -fx-padding: 0;
+}
+
+/* Subtle bottom border on each row instead of stripes */
+.table-row-cell:filled {
+    -fx-border-color: transparent transparent #f3f4f6 transparent;
+    -fx-border-width: 0 0 1 0;
+}
+
+/* Empty rows below the data should be invisible, not striped grey */
+.table-row-cell:empty {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+/* Hover effect — table feels responsive */
+.table-row-cell:filled:hover {
+    -fx-background-color: #f9fafb;
+}
+
+/* Selected row uses a soft tint of the primary color */
+.table-row-cell:filled:selected {
+    -fx-background-color: derive(-primary, 88%);
+}
+
+.table-row-cell:filled:selected .text {
+    -fx-fill: -text-primary;
+}
+
+/* ---------- Cells ---------- */
+
+.table-cell {
+    -fx-padding: 0 14 0 14;
+    -fx-alignment: CENTER_LEFT;
+    -fx-border-color: transparent;
+    -fx-text-fill: -text-primary;
+    -fx-font-size: 13px;
+}
+
+/* ---------- Empty-state placeholder ---------- */
+
+.table-view .placeholder .label {
+    -fx-text-fill: -text-muted;
+    -fx-font-style: italic;
+}
+
+/* =========================================================
+   Auth screens (Login / Signup) — centered and welcoming
+   ========================================================= */
+
+.auth-root {
+    -fx-background-color: linear-gradient(to bottom right, #eef2ff, #fafaf9);
+}
+
+.auth-card {
+    -fx-background-color: -card-bg;
+    -fx-background-radius: 16;
+    -fx-border-color: -border;
+    -fx-border-radius: 16;
+    -fx-padding: 32;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 16, 0, 0, 4);
+}
+
+/* =========================================================
+   Upcoming task rows on the Dashboard
+   ========================================================= */
+
+.upcoming-row {
+    -fx-background-color: #f9fafb;
+    -fx-background-radius: 8;
+    -fx-padding: 10 14 10 14;
+}
+
+/* =========================================================
+   Progress bar (Dashboard completion)
+   ========================================================= */
+
+.progress-bar > .bar {
+    -fx-background-color: -primary;
+    -fx-background-radius: 4;
+}
+
+.progress-bar > .track {
+    -fx-background-color: #e5e7eb;
+    -fx-background-radius: 4;
+}
+
+/* =========================================================
+   Hyperlinks (used in auth views)
+   ========================================================= */
+
+.hyperlink {
+    -fx-text-fill: -primary;
+    -fx-border-color: transparent;
+    -fx-padding: 4 0 4 0;
+}
+
+.hyperlink:hover {
+    -fx-underline: true;
+}
+
+/* =========================================================
+   Dialogs (shared form popups)
+   ========================================================= */
+
+.dialog-pane {
+    -fx-background-color: -card-bg;
+}
+
+.dialog-pane .header-panel {
+    -fx-background-color: -card-bg;
+}
+/* =========================================================
+   Notification bell + badge
+   ========================================================= */
+
+.notification-bell {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-padding: 6 10 6 10;
+    -fx-cursor: hand;
+    -fx-font-size: 16px;
+}
+
+.notification-bell:hover {
+    -fx-background-color: #f5f5f4;
+    -fx-background-radius: 6;
+}
+
+.notification-badge {
+    -fx-background-color: -danger;
+    -fx-text-fill: white;
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+    -fx-padding: 1 6 1 6;
+    -fx-background-radius: 10;
+    -fx-min-width: 16;
+    -fx-alignment: CENTER;
+}
+
+/* =========================================================
+   Notification popup panel
+   ========================================================= */
+
+.notification-popup {
+    -fx-background-color: white;
+    -fx-background-radius: 10;
+    -fx-border-color: -border;
+    -fx-border-radius: 10;
+    -fx-border-width: 1;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.12), 16, 0, 0, 4);
+}
+
+.notification-item {
+    -fx-cursor: hand;
+}
+
+.notification-item:hover {
+    -fx-background-color: #f9fafb;
+}
+/* =========================================================
+   Dialogs (Add/Edit forms)
+   ========================================================= */
+
+.dialog-pane {
+    -fx-background-color: white;
+    -fx-padding: 0;
+}
+
+.dialog-pane > .content.label {
+    -fx-padding: 0;
+    -fx-font-size: 13px;
+}
+
+.dialog-pane > .button-bar > .container {
+    -fx-padding: 14 20 18 20;
+    -fx-background-color: white;
+}
+
+/* The OK button — primary action */
+.dialog-pane .button.default {
+    -fx-background-color: -primary;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-border-color: transparent;
+    -fx-padding: 8 18 8 18;
+    -fx-background-radius: 6;
+    -fx-border-radius: 6;
+    -fx-cursor: hand;
+}
+
+.dialog-pane .button.default:hover {
+    -fx-background-color: -primary-hover;
+}
+
+/* The Cancel button — secondary action */
+.dialog-pane .button.cancel-button,
+.dialog-pane .button {
+    -fx-background-color: white;
+    -fx-text-fill: -text-primary;
+    -fx-border-color: -border;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-padding: 8 18 8 18;
+    -fx-cursor: hand;
+}
+
+.dialog-pane .button:hover {
+    -fx-background-color: #f5f5f4;
+}
+
+/* Dialog "card" wrapper — used when title goes inside the body */
+.dialog-card {
+    -fx-background-color: white;
+    -fx-background-radius: 12;
+    -fx-padding: 24 24 0 24;
+}
+
+.dialog-title {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -text-primary;
+    -fx-padding: 0 0 16 0;
+}
+/* =========================================================
+   Spinner overrides — text field inside spinner needs
+   tighter padding than free-standing text fields
+   ========================================================= */
+
+.spinner > .text-field {
+    -fx-padding: 4 4 4 6;
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-background-radius: 0;
+    -fx-border-radius: 0;
+}
+
+.spinner {
+    -fx-min-width: 70;
+}
+/* =========================================================
+   Dropdown popups (ComboBox, ChoiceBox, DatePicker)
+   ========================================================= */
+
+/* ---------- ComboBox dropdown ---------- */
+
+.combo-box-popup .list-view {
+    -fx-background-color: white;
+    -fx-border-color: -border;
+    -fx-border-width: 1;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-padding: 4;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 12, 0, 0, 4);
+}
+
+.combo-box-popup .list-view .list-cell {
+    -fx-padding: 8 14 8 14;
+    -fx-background-color: transparent;
+    -fx-text-fill: -text-primary;
+    -fx-background-radius: 4;
+    -fx-font-size: 13px;
+}
+
+.combo-box-popup .list-view .list-cell:filled:hover {
+    -fx-background-color: #f5f5f4;
+}
+
+.combo-box-popup .list-view .list-cell:filled:selected {
+    -fx-background-color: derive(-primary, 85%);
+    -fx-text-fill: -text-primary;
+}
+
+/* ---------- ChoiceBox dropdown (uses ContextMenu under the hood) ---------- */
+
+.context-menu {
+    -fx-background-color: white;
+    -fx-border-color: -border;
+    -fx-border-width: 1;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-padding: 4;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 12, 0, 0, 4);
+}
+
+.context-menu .menu-item {
+    -fx-padding: 8 14 8 14;
+    -fx-background-color: transparent;
+    -fx-background-radius: 4;
+}
+
+.context-menu .menu-item .label {
+    -fx-text-fill: -text-primary;
+    -fx-font-size: 13px;
+}
+
+.context-menu .menu-item:focused,
+.context-menu .menu-item:hover {
+    -fx-background-color: #f5f5f4;
+}
+
+.context-menu .menu-item:focused .label,
+.context-menu .menu-item:hover .label {
+    -fx-text-fill: -text-primary;
+}
+
+/* ---------- DatePicker popup (calendar) ---------- */
+
+.date-picker-popup {
+    -fx-background-color: white;
+    -fx-border-color: -border;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 12, 0, 0, 4);
+}
+
+.date-picker-popup .month-year-pane {
+    -fx-background-color: #f9fafb;
+    -fx-background-radius: 8 8 0 0;
+}
+
+.date-picker-popup .day-cell:hover {
+    -fx-background-color: #f5f5f4;
+}
+
+.date-picker-popup .selected,
+.date-picker-popup .day-cell:selected {
+    -fx-background-color: -primary;
+    -fx-text-fill: white;
+}
+
+.date-picker-popup .today {
+    -fx-border-color: -primary;
+    -fx-border-radius: 4;
+}
